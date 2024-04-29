@@ -16,8 +16,11 @@ rails db:seed
 
 
 # _`Features`_ 
-#  SignUp & SignIn
+#  SignUp & SignIn with Devise authentication with
 > when someone visit the site they can navigate to `signUp ` page and sign Up by providing neccessary details,and after registration they can log into their accounts.
+> Also there are features like
+> 1. forgot password ( you have to click the mailer link from the rails console because the default is not set )
+> 2. Updating the profile with some better options
 ![Screenshot from 2024-04-30 03-51-09](https://github.com/revolution-99/DESheets/assets/60106442/b6157e20-6345-459e-9c16-fd467092ba45)
 ![Screenshot from 2024-04-30 03-52-21](https://github.com/revolution-99/DESheets/assets/60106442/eed9ab14-ced5-43ab-8b2e-6e51a4edaa79)
 
@@ -46,5 +49,10 @@ rails db:seed
 ![Screenshot from 2024-04-30 04-09-49](https://github.com/revolution-99/DESheets/assets/60106442/083f7ec2-c0cb-4fa7-a7d9-d85ceb5997c3)
 ![Screenshot from 2024-04-30 04-10-28](https://github.com/revolution-99/DESheets/assets/60106442/70d416b8-4bce-4143-81cb-083772fb9a7d)
 
+### Test Cases added for the models
+1. Model test coverage is 100%
 
+### Things missed out beacuse of time constraint
+1. Implementation of AJAX
+2. Implementation of API end point
 
