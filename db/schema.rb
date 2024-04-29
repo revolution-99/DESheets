@@ -42,7 +42,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_28_075536) do
   end
 
   create_table "projects", force: :cascade do |t|
-    t.string "title"
+    t.string "title", null: false
     t.date "start_date"
     t.date "end_date"
     t.datetime "created_at", null: false

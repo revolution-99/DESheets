@@ -81,6 +81,7 @@
 </div>
 
 <%= javascript_tag nonce: true do -%>
+    <% # It renders a multi select dropdown. Right now it is not preloading the values in the edit form but will resolve it soon%>
     $(document).ready(function() {
 
       var dropdownMenu = $(this).find('.checkbox-dropdown-menu');

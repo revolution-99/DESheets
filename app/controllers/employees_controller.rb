@@ -7,6 +7,8 @@ class EmployeesController < ApplicationController
 
   def new
     @employee = Employee.new
+
+    # I am restricting the projects that have already concluded based on the end date to go the form
     @valid_projects = Project.all.reject { |p| p.end_date && p.end_date < Date.today }
   end
 

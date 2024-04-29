@@ -4,6 +4,7 @@ class Department < ApplicationRecord
 
   validates :name, presence: true, uniqueness: true
 
+  # custom validator to prevent deletion of departments that have employees still assigned to them
   def check_employees_before_deletion
     if employees.present?
       errors.add(:base, "You can't delete the department because it has employees")

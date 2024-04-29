@@ -35,6 +35,7 @@
           <td><%= project.end_date %></td>
           <td>
             <% project.employees.each do |emp| %>
+              <% # Here I am showing the employees' working hour for relevant projects %>
               <%= emp.name %> ( hours: <%= emp.assignments.where(project_id: project.id).first.hours_worked %> )
               <br>
             <% end%>

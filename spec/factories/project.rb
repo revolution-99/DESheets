@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :project do
-    # Will define attributes here later on
+    title { Faker::Name.name }
   end
 end

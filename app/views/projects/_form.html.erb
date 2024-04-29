@@ -17,7 +17,7 @@
               </div>
             </div>
 
-            <div class="col-md-6  mb-2 mt-2">
+            <div class="col-md-6 mb-2 mt-2">
               <div class="form-group">
                 <%= label_tag "Employees" %>
                 <div class="checkbox-dropdown">
@@ -30,7 +30,7 @@
                     <div id="checkboxList">
                       <% Employee.all.each do |emp| %>
                         <label class="checkbox-item">
-                          <%= check_box_tag "project[employee_ids][]", emp.id, true %><%= emp.name %>
+                          <%= check_box_tag "project[employee_ids][]", emp.id, false %><%= emp.name %>
                           <span class="checkmark"></span>
                         </label>
                       <% end %>
