@@ -1,18 +1,18 @@
 <div class="container">
   <div class="card mt-5">
     <div class="card-header">
-      Employee Details
+      Department Details
     </div>
     <div class="card-body">
-      <h5 class="card-title">Employee ID: <%= @department.id %></h5>
+      <h5 class="card-title">Department ID: <%= @department.id %></h5>
       <p class="card-text">Name: <%= @department.name %></p>
       <p class="card-text">Location: <%= @department.location %></p>
     </div>
     <div class="card-footer d-flex justify-content-end">
-      <%= link_to edit_employee_path(@department), class: "btn mr-2" do %>
+      <%= link_to edit_department_path(@department), class: "btn mr-2" do %>
         <i class="fas fa-edit"></i> Edit
       <% end %>
-      <%= button_to employee_path(@department), method: :delete, data: { confirm: "Are you sure?" }, class: "btn" do %>
+      <%= button_to department_path(@department), method: :delete, data: { confirm: "Are you sure?" }, class: "btn" do %>
         <i class="fas fa-trash-alt"></i> Delete
       <% end %>
     </div>
