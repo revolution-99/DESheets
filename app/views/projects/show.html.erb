@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="card mt-5">
+    <div class="card-header">
+      Project Details
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Project ID: <%= @project.id %></h5>
+      <p class="card-text">Title: <%= @project.title %></p>
+    </div>
+    <div class="card-footer d-flex justify-content-end">
+      <%= link_to edit_project_path(@project), class: "btn mr-2" do %>
+        <i class="fas fa-edit"></i> Edit
+      <% end %>
+      <%= button_to project_path(@project), method: :delete, data: { confirm: "Are you sure?" }, class: "btn" do %>
+        <i class="fas fa-trash-alt"></i> Delete
+      <% end %>
+    </div>
+  </div>
+</div>

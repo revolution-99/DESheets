@@ -1,0 +1,53 @@
+<div class="container">
+  <h2 class="text-center mb-4">Employee Management</h2>
+
+  <div class="col text-right mb-2">
+    <div class="card">
+      <div class="card-body d-flex justify-content-between align-items-center">
+        <div>
+          <h5 class="card-title mb-0">DESheets/Employees</h5>
+        </div>
+        <div>
+          <%= link_to "Create Employee", new_employee_path(@employee), class: "btn btn-outline-primary" %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <table class="table table-default table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Department</th>
+        <th>Assigned Projects</th>
+        <th class="d-flex justify-content-center">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @employees.each do |employee| %>
+        <tr>
+          <td><%= link_to employee.id, employee_path(employee.id), class: "text-decoration-none" %></td>
+          <td><%= employee.name %></td>
+          <td><%= employee.email %></td>
+          <td><%= employee.department&.name %></td>
+          <td>
+            <% employee.projects.each do |p| %>
+              <%= p.title %>
+              <br>
+            <% end %>
+          </td>
+          <td class="d-flex justify-content-center">
+            <%= link_to edit_employee_path(employee.id), class: "btn mr-2" do %>
+              <i class="fas fa-edit"></i> Edit
+            <% end %>
+            <%= button_to employee_path(employee.id), method: :delete, data: { confirm: "Are you sure?" }, class: "btn" do %>
+              <i class="fas fa-trash-alt"></i> Delete
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

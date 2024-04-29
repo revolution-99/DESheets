@@ -1,0 +1,40 @@
+<div class="container">
+  <%= form_for @department do |f| %>
+    <%= render "shared/error_messages", object: @department %>
+
+    <h2 class="text-center mb-4">Department Form (ID: <%= @department.id %>)</h2>
+
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        <div class="page-section">
+        <div class="row">
+          <div class="col-xl-8">
+            <div class="page-section">
+              <div class="row mx-n1">
+                <div class="col-md-6 mb-2">
+                  <div class="form-group">
+                    <%= f.label :name, "Name", class: "label required" %>
+                    <%= f.text_field :name, class: "form-control", required: true %>
+                  </div>
+                </div>
+
+                <div class="col-md-6 mb-2">
+                  <div class="form-group">
+                    <%= f.label :location, "Location" %>
+                    <%= f.text_field :location, class: "form-control" %>
+                  </div>
+                </div>
+
+                <div class="col-md-12">
+                  <%= f.button "Save", class: "btn btn-primary", data: { disable_with: "Please Wait.." } do %>
+                    <span class="fas fa-save"></span> Save
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,49 @@
+<div class="container">
+  <%= form_for @assignment do |f| %>
+
+    <%= render "shared/error_messages", object: @assignment %>
+
+    <h2 class="text-center mb-4">Assignment Form (ID: <%= @assignment.id %>)</h2>
+
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        <div class="page-section">
+          <div class="row">
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <%= f.label :project_id, "Project", class: "label" %>
+                <%= f.select :project_id, Project.all.pluck(:title, :id), { include_blank: "-- Select Project --" }, class: "form-control" %>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <%= f.label :employee_id, "Employee", class: "label" %>
+                <%= f.select :employee_id, Employee.all.pluck(:name, :id), { include_blank: "-- Select Employeee --" }, class: "form-control" %>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <%= f.label :hours_worked, "Hours Worked", class: "label" %>
+                <%= f.number_field :hours_worked, autocomplete: :off, class: "form-control", placeholder: "Enter Hours" %>
+              </div>
+            </div>
+
+              </div>
+            </div>
+
+            <div class="col-md-12 mt-2">
+              <%= f.button "Save", class: "btn btn-primary", data: { disable_with: "Please Wait.." } do %>
+                <span class="fas fa-save"></span> Save
+              <% end %>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <% end %>
+</div>

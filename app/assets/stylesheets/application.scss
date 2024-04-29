@@ -1,0 +1,61 @@
+@import "bootstrap";
+@import "jquery-ui.css";
+// checkboxSelect dropdown styles
+.checkbox-dropdown {
+  position: relative;
+}
+
+.checkbox-dropdown-toggle {
+  padding: 11px 22px 7px 10px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  cursor: pointer;
+  color: #444;
+  line-height: 1;
+}
+
+.checkbox-dropdown-menu {
+  position: absolute;
+  display: none;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 10px;
+  min-width: 200px;
+  z-index: 1;
+}
+
+.checkbox-dropdown-menu.show {
+  display: contents;
+  position: absolute;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  width: 100%;
+  margin-top: 5px;
+  z-index: 1000;
+  font-size: 15px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.arrow.fs-arrow.show {
+  transform: rotate(-180deg);
+}
+
+.search-container {
+  margin-bottom: 10px;
+}
+
+#searchInput {
+  border: none !important;
+  outline: none;
+  padding: 6px 0;
+  width: 100%;
+}
+
+.checkbox-item {
+  display: flex;
+  gap: 7px;
+  margin-bottom: 5px;
+  border-bottom: 1px solid #eee;
+  background-color: aliceblue
+}

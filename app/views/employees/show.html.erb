@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="card mt-5">
+    <div class="card-header">
+      Employee Details
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Employee ID: <%= @employee.id %></h5>
+      <p class="card-text">Name: <%= @employee.name %></p>
+      <p class="card-text">Email: <%= @employee.email %></p>
+      <p class="card-text">Department: <%= @employee.department&.name %></p>
+    </div>
+    <div class="card-footer d-flex justify-content-end">
+      <%= link_to edit_employee_path(@employee), class: "btn mr-2" do %>
+        <i class="fas fa-edit"></i> Edit
+      <% end %>
+      <%= button_to employee_path(@employee), method: :delete, data: { confirm: "Are you sure?" }, class: "btn" do %>
+        <i class="fas fa-trash-alt"></i> Delete
+      <% end %>
+    </div>
+  </div>
+</div>

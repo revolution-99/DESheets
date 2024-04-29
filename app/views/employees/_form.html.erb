@@ -1,0 +1,138 @@
+<div class="container">
+  <%= form_for @employee do |f| %>
+
+    <%= render "shared/error_messages", object: @employee %>
+
+    <h2 class="text-center mb-4">Employee Form (ID: <%= @employee.id %>)</h2>
+
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        <div class="page-section">
+          <div class="row">
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <%= f.label :email, "Email", class: "label required" %>
+                <%= f.text_field :email, autocomplete: :off, class: "form-control", placeholder: "Enter Email", required: true %>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <%= f.label :name, "Name", class: "label required" %>
+                <%= f.text_field :name, autocomplete: :off, class: "form-control", placeholder: "Enter Name", required: true %>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <%= f.label :department_id, "Department", class: "label" %>
+                <div class="input-group">
+                  <%= f.collection_select :department_id, Department.all, :id, :name, { include_blank: "-- Select Department --" }, class: "form-control" %>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <%= f.label :date_of_hire, "Date of Hire", class: "label" %>
+                <%= f.date_field :date_of_hire, value: @employee.date_of_hire, class: "form-control" %>
+              </div>
+            </div>
+
+            <div class="col-md-6  mb-2 mt-2">
+              <div class="form-group">
+                <%= label_tag "Projects" %>
+                <div class="checkbox-dropdown">
+                  <div class="checkbox-dropdown-toggle">
+                    <span class="selected-items">Select some options</span>
+                    <span><i class="fas fa-caret-down ps-4"></i></span>
+                  </div>
+                  <div class="checkbox-dropdown-menu">
+                    <input type="text" id="searchInput" class="checkbox-item" placeholder="Search">
+                    <div id="checkboxList">
+                      <% @valid_projects.each do |p| %>
+                        <label class="checkbox-item">
+                          <%= check_box_tag "employee[project_ids][]", p.id, true %><%= p.title %>
+                          <span class="checkmark"></span>
+                        </label>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+              </div>
+            </div>
+
+            <div class="col-md-12">
+              <%= f.button "Save", class: "btn btn-primary", data: { disable_with: "Please Wait.." } do %>
+                <span class="fas fa-save"></span> Save
+              <% end %>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <% end %>
+</div>
+
+<%= javascript_tag nonce: true do -%>
+    $(document).ready(function() {
+
+      var dropdownMenu = $(this).find('.checkbox-dropdown-menu');
+      var dropdownToggle = $(this).find('.checkbox-dropdown-toggle');
+      var dropdownArrow = $(this).find('.arrow.fs-arrow');
+
+      dropdownToggle.click(function() {
+        dropdownMenu.toggleClass('show');
+        dropdownArrow.toggleClass('show');
+      });
+
+      $(document).click(function(event) {
+        if (!$(event.target).closest('.checkbox-dropdown').length) {
+          dropdownMenu.removeClass('show');
+        }
+      });
+
+      $(this).find('#searchInput').keyup(function() {
+        var searchValue = $(this).val().toLowerCase();
+        $('#checkboxList .checkbox-item').each(function() {
+          var checkboxLabel = $(this).text().toLowerCase();
+          if (checkboxLabel.includes(searchValue)) {
+            $(this).show();
+          }
+          else {
+            $(this).hide();
+          }
+        });
+      });
+
+      $(this).find('.checkbox-dropdown-menu input[type="checkbox"]').change(function() {
+        var selectedItems = [];
+        $(this).closest('.checkbox-dropdown-menu').find('input[type="checkbox"]:checked').each(function() {
+          selectedItems.push($(this).parent().text().trim());
+        });
+
+        var selectedItemsText = '';
+
+        if (selectedItems.length > 3) {
+          selectedItemsText = selectedItems.length + ' selected';
+        }
+        else if(selectedItems.length > 0) {
+          selectedItemsText= selectedItems.join(', ');
+        }
+        else {
+          selectedItemsText = "Select some options"
+        }
+        $('.selected-items').text(selectedItemsText);
+      });
+
+      $(this).find('.checkbox-dropdown-menu input[type="checkbox"]').trigger('change');
+
+    })
+
+<% end %>
